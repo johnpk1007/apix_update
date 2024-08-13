@@ -47,6 +47,10 @@ app.get("/weekly", async (req, res) => {
 
 app.get("/daily", async (req, res) => {
   try {
+    const date = new Date();
+    if (date.getUTCDay() === 2) {
+      throw new Error("It is Tuesday. Try tomorrow");
+    }
     await connectToDB();
     const billboardCheckResult = await billboardCheck();
     const billboardArtistCheckResult = await billboardArtistCheck();
