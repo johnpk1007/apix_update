@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 export async function multipleArtistScrape(data) {
   const session = await mongoose.startSession();
   try {
+    console.log("billboard artist scrape process starts");
     session.startTransaction();
 
     const conditions = [",", "Featuring", "&", "X"];

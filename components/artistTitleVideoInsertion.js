@@ -5,6 +5,10 @@ import axios from "axios";
 
 const videoSearch = async (query) => {
   try {
+    console.log(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&type=video&q=${query.replace(
+        / /gi,
+        "%20"
+      )}&key=${process.env.YOUTUBE_API_KEY}`)
     const response = await axios.get(
       `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&type=video&q=${query.replace(
         / /gi,
@@ -14,6 +18,7 @@ const videoSearch = async (query) => {
     return response.data.items[0].id.videoId;
   } catch (error) {
     console.log("videosearch error");
+    console.log(error)
     throw error;
   }
 };

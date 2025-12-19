@@ -17,10 +17,10 @@ export const billboardInsertion = async () => {
       return obj;
     });
 
-    const result = await billboardInsertionBeforeCheck(data);
-    if (result) {
-      throw new Error("nothing to update");
-    }
+    // const result = await billboardInsertionBeforeCheck(data);
+    // if (result) {
+    //   throw new Error("nothing to update");
+    // }
 
     const bulkOperation = data.map((singleData) => ({
       insertOne: { document: singleData },

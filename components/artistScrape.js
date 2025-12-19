@@ -9,7 +9,7 @@ export async function artistScrape(artist) {
     const html = response.data;
     const $ = cheerio.load(html);
     const image = $(
-      "div.a-artist-history-page-background > div.artist-info-chart-history"
+      "section.artist-grid-wrapper > div.a-artist-grid > div.a-artist-grid__main-content > div.artist-info-chart-history > div > div.lrv-u-flex > div.c-lazy-image"
     );
     const list = $(
       "div.artist-chart-history-container > div.artist-chart-history-items> div.o-chart-results-list-row"
@@ -65,3 +65,5 @@ export async function artistScrape(artist) {
     throw error;
   }
 }
+
+artistScrape('mariah-carey')

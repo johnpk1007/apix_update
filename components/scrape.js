@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import axios from "axios";
 
 export async function scrape() {
+  console.log('scrape start')
   let content = [];
   const url = "https://www.billboard.com/charts/hot-100/";
   const response = await axios.get(url);
@@ -33,19 +34,19 @@ export async function scrape() {
         .replace(/[\n\t]/g, ""),
       last_week: $(el)
         .find(
-          "ul.o-chart-results-list-row > li.lrv-u-width-100p > ul.lrv-a-unstyle-list > li.o-chart-results-list__item:nth-child(4) > span"
+          "ul.o-chart-results-list-row > li.lrv-u-width-100p > ul.lrv-a-unstyle-list > div.lrv-u-flex-direction-column > div.lrv-u-flex:first-child > li.o-chart-results-list__item > span.c-label"
         )
         .text()
         .replace(/[\n\t]/g, ""),
       peak_pos: $(el)
         .find(
-          "ul.o-chart-results-list-row > li.lrv-u-width-100p > ul.lrv-a-unstyle-list > li.o-chart-results-list__item:nth-child(5) > span"
+          "ul.o-chart-results-list-row > li.lrv-u-width-100p > ul.lrv-a-unstyle-list > div.lrv-u-flex-direction-column > div.lrv-u-flex:nth-child(2) > li.o-chart-results-list__item > span.c-label"
         )
         .text()
         .replace(/[\n\t]/g, ""),
       wks_on_chart: $(el)
         .find(
-          "ul.o-chart-results-list-row > li.lrv-u-width-100p > ul.lrv-a-unstyle-list > li.o-chart-results-list__item:nth-child(6) > span"
+          "ul.o-chart-results-list-row > li.lrv-u-width-100p > ul.lrv-a-unstyle-list > div.lrv-u-flex-direction-column > div.lrv-u-flex:nth-child(3) > li.o-chart-results-list__item > span.c-label"
         )
         .text()
         .replace(/[\n\t]/g, ""),

@@ -5,6 +5,7 @@ export const queInsertion = async (data) => {
   let list = [];
   const session = await mongoose.startSession();
   try {
+    console.log("que insertion starts");
     session.startTransaction();
     data.map((el, idx) => {
       list[idx] = {

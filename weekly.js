@@ -14,10 +14,6 @@ configDotenv();
 
 async function weeklyTask() {
   try {
-    // const date = new Date();
-    // if (date.getUTCDay() !== 2) {
-    //   throw new Error("It isn't Tuesday yet");
-    // }
     await connectToDB();
     const data = await billboardInsertion();
     await queInsertion(data);
